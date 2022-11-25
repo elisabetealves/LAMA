@@ -196,6 +196,15 @@ E divirta-se :)
 
 <br>
 
+## 🔃 Rotas TICKETS:
+
+| Método HTTP | Endpoint            | Descrição         |
+| ----------- | ------------------- | ----------------- |
+| POST        | `/ticket/create`    | Criar um ingresso |
+| POST        | `/ticket/buyticket` | Comprar ingresso  |
+
+<br>
+
 ## ✨ O que funciona
 
 - Cadastrar
@@ -204,13 +213,13 @@ E divirta-se :)
 - Visualização de detalhes sobre a banda
 - Adicionar um show a um dia
 - Pegar todos os shows de uma data
+- Criar um ingresso
+- Comprar ingresso
 
 <br>
 
 ## ❌ O Que Não Funciona
 
-- Criar um ingresso
-- Comprar ingresso
 - Adicionar foto
 - Pegar todas as fotos
 
@@ -226,8 +235,8 @@ _Caso queira contribuir com o projeto, será totalmente bem-vindx!!!_
 _Qualquer dúvida ou sugestão, chama no contatinho!_
 
   <tr>  
-     <td align="center"><a href="https://github.com/dickfreitas"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98359009?v=4" width="100px;" alt=""/><br /><sub><b>Dickson Freitas</b></sub></a><br /><a href="https://www.linkedin.com/in/"> <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a> </td>    
-    <td align="center"><a href="https://github.com/elisabetealves"><img style="border-radius: 50%;" src="https://unavatar.now.sh/github/elisabetealves" width="100px;" alt=""/><br /><sub><b>Elisabete Alves</b></sub></a><br /><a href="https://www.linkedin.com/in/elisabete-a-santos/"> <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a> </td> 
+   <td align="center"><a href="https://github.com/dickfreitas"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98359009?v=4" width="100px;" alt=""/><br /><sub><b>Dickson Freitas</b></sub></a><br /><a href="https://www.linkedin.com/in/"> <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a> </td>    
+   <td align="center"><a href="https://github.com/elisabetealves"><img style="border-radius: 50%;" src="https://unavatar.now.sh/github/elisabetealves" width="100px;" alt=""/><br /><sub><b>Elisabete Alves</b></sub></a><br /><a href="https://www.linkedin.com/in/elisabete-a-santos/"> <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a> </td> 
   </tr>
 
 </table>
