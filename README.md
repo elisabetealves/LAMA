@@ -5,7 +5,7 @@
 
 </h1>
 <p align="center">
-<img src="LAMA/image/musical3.png" width="40%" height="20%"/>
+<img src="image/musical3.png" width="40%" height="20%"/>
 </p>
 
 <br>
@@ -112,6 +112,14 @@ O endpoint receberá o identificador do evento e devolverá todas as fotos deste
 
 <br>
 
+## 🔗 Link da documentação do postman
+
+<br>
+
+https://documenter.getpostman.com/view/22901544/2s8Ysp2b4b
+
+<br>
+
 ## 📚 Aprendizado
 
 <br>
@@ -172,19 +180,19 @@ E divirta-se :)
 
 ## 🔃 Rotas BANDAS:
 
-| Método HTTP | Endpoint                | Descrição                              |
-| ----------- | ----------------------- | -------------------------------------- |
-| POST        | `/band/add`             | Cria/cadastra uma banda                |
-| GET         | `/band/details/:idBand` | Visualização de detalhes sobre a banda |
+| Método HTTP | Endpoint    | Descrição                              |
+| ----------- | ----------- | -------------------------------------- |
+| POST        | `/band/add` | Cria/cadastra uma banda                |
+| GET         | `/band/:id` | Visualização de detalhes sobre a banda |
 
 <br>
 
 ## 🔃 Rotas SHOWS:
 
-| Método HTTP | Endpoint               | Descrição                        |
-| ----------- | ---------------------- | -------------------------------- |
-| GET         | `/band/details/search` | Pegar todos os shows de uma data |
-| POST        | `band/added/:bandId`   | Adicionar um show a um dia       |
+| Método HTTP | Endpoint        | Descrição                        |
+| ----------- | --------------- | -------------------------------- |
+| GET         | `/show/create`  | Pegar todos os shows de uma data |
+| POST        | `/show/getshow` | Adicionar um show a um dia       |
 
 <br>
 

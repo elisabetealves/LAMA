@@ -1,42 +1,81 @@
 import { UserInputDTO, LoginInputDTO } from "../model/User";
 import { UserDatabase } from "../data/UserDatabase";
-import { IdGenerator } from "../services/IdGenerator";
 import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
+import { IdGenerator } from "../services/IdGenerator";
+import { BaseError } from "../error/BaseError";
 
 export class UserBusiness {
+    constructor(
+        private userData: UserDatabase,
+        private idGenerator: IdGenerator,
+        private hashManager: HashManager,
+        private authenticator: Authenticator,
+    ) { }
+    createUser = async (input: UserInputDTO) => {
+        const { name, password, email, role } = input
 
-    async createUser(user: UserInputDTO) {
+        if (!name || !email || !password || !role) {
+            throw new BaseError(422, "Invalid fields")
 
-        const idGenerator = new IdGenerator();
-        const id = idGenerator.generate();
+        }
 
-        const hashManager = new HashManager();
-        const hashPassword = await hashManager.hash(user.password);
+        if (email.indexOf("@") === -1) {
+            throw new BaseError(422, "Invalid email");
+        }
 
-        const userDatabase = new UserDatabase();
-        await userDatabase.createUser(id, user.email, user.name, hashPassword, user.role);
+        if (password.length < 6) {
+            throw new BaseError(422, "Invalid password")
+        }
 
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generateToken({ id, role: user.role });
+        if (role !== "NORMAL" && role !== "ADMIN") {
+            throw new BaseError(422, "Invalid user role")
+        }
+
+        const registeredUser = await this.userData.getUserByEmail(email)
+        if (registeredUser) {
+            throw new BaseError(422, "E-mail already registered")
+        }
+
+        const id = this.idGenerator.generate();
+
+        const hashPassword = await this.hashManager.hash(password);
+
+        await this.userData.signup(id, name, email, hashPassword, role);
+
+        const accessToken = this.authenticator.generateToken({ id, role });
 
         return accessToken;
     }
 
-    async getUserByEmail(user: LoginInputDTO) {
+    getUserByEmail = async (user: LoginInputDTO) => {
 
-        const userDatabase = new UserDatabase();
-        const userFromDB = await userDatabase.getUserByEmail(user.email);
+        const { email, password } = user
+        if (!email || !password) {
+            throw new BaseError(422, "'email' and 'password' are required")
+        }
 
-        const hashManager = new HashManager();
-        const hashCompare = await hashManager.compare(user.password, userFromDB.getPassword());
+        if (email.indexOf("@") === -1) {
+            throw new BaseError(422, "Invalid email");
+        }
 
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
+        if (password.length < 6) {
+            throw new BaseError(422, "Invalid password");
+        }
+
+        const userFromDB = await this.userData.getUserByEmail(user.email)
+
+        if (!userFromDB) {
+            throw new BaseError(401, "User not found")
+        }
+
+        const hashCompare = await this.hashManager.compare(user.password, userFromDB.getPassword());
 
         if (!hashCompare) {
-            throw new Error("Invalid Password!");
+            throw new BaseError(401, "Incorrect password")
         }
+
+        const accessToken = this.authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
 
         return accessToken;
     }

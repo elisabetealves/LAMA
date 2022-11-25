@@ -1,11 +1,14 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVjYWQ0YjU1LTE1YjQtNDRlNS1hMTY5LTVhYmZiYmU2NmI4OSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2OTMxMzA5MSwiZXhwIjoxNjY5MzEzNjkxfQ.e5s4wbjb8RaxEhU7aHPFX5d1WsfPoh7QAKXd1fpHr30
+
+
 ### Cadastro
 POST http://localhost:3003/user/signup 
 Content-Type: application/json
 
 {
-   "name":"Maria", 
-   "email":"maria@gmail.com", 
-   "password":"1234567", 
+   "name":"Lunnaa", 
+   "email":"lunna@gmail.com", 
+   "password":"123456", 
    "role":"ADMIN"
 }
 
@@ -15,35 +18,38 @@ POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-   "email": "maria@gmail.com", 
-   "password":"1234567"
+   "email": "lunna@gmail.com", 
+   "password":"123456"
 }
 
 ###  Registrar banda
 POST http://localhost:3003/band/add 
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjODBlNjk1LWY1MmQtNDJhNi05Nzk2LTEwOTBlMjI4ZDFjNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2OTI0NDg2MSwiZXhwIjoxNjY5MjQ1NDYxfQ.1hp2xlIXgK_ajkPIYgCdqlr4BmitIUcbr6J5jE519ZI
+Authorization: {{token}}
 Content-Type: application/json
 
 {
-   "name": "Chá de casa nova", 
+   "name": "A maior saudade", 
    "music_genre": "Sertanejo", 
-   "responsible": "Henrique e Juliano"
+   "responsible": "H e J"
 }
 
 
 ### DETALHES DAS BANDAS
-GET http://localhost:3003/band/details/:idBand
+GET http://localhost:3003/band/b941b81b-b5a8-4ce9-a4b0-d3635555d3b5
+Authorization: {{token}}
 
-###BUSCAR BANDA PELO DIA E ORDENAR
-GET http://localhost:3003/band/details/search?day={DIA A PESQUISAR}?order={ASC|DESC}
+###MOSTRAR TODOS OS SHOW DE UM DIA
+GET http://localhost:3003/show/getshow/?week_day=domingo
+Authorization: {{token}}
 
 ### ADICIONAR LISTA DE SHOWS
-POST http://localhost:3003/band/added/:bandId
-Content-Type: application/json
+POST http://localhost:3003/show/create 
+Authorization: {{token}}
+Content-Type: application/json 
 
 {
-    "weekDay" : "DOMINGO",
-    "startTime" : 12,
-    "endTime" : 13
+   "band_id": "b941b81b-b5a8-4ce9-a4b0-d3635555d3b5", "week_day": "domingo", 
+   "start_time": 12, 
+   "end_time": 13
 }
 

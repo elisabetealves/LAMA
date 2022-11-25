@@ -1,47 +1,59 @@
 import { Request, Response } from "express";
-import { UserInputDTO, LoginInputDTO} from "../model/User";
+import { UserInputDTO, LoginInputDTO } from "../model/User";
 import { UserBusiness } from "../business/UserBusiness";
 import { BaseDatabase } from "../data/BaseDatabase";
 
 export class UserController {
-    async signup(req: Request, res: Response) {
+
+    constructor(
+        private userBusiness: UserBusiness
+    ) { }
+    createUser = async (req: Request, res: Response) => {
         try {
 
+            const { name, email, password, role } = req.body
+
             const input: UserInputDTO = {
-                email: req.body.email,
-                name: req.body.name,
-                password: req.body.password,
-                role: req.body.role
+                name,
+                email,
+                password,
+                role
             }
 
-            const userBusiness = new UserBusiness();
-            const token = await userBusiness.createUser(input);
+            const token = await this.userBusiness.createUser(input);
 
-            res.status(200).send({ token });
+            res.status(200).send({ message: "User registered successfully", token });
 
         } catch (error) {
-            res.status(400).send({ error: error.message });
+            if (error instanceof Error) {
+                return res.status(400).send(error.message)
+            }
+            res.status(500).send("Erro no signup")
         }
 
         await BaseDatabase.destroyConnection();
     }
 
-    async login(req: Request, res: Response) {
+    login = async (req: Request, res: Response) => {
 
         try {
 
-            const loginData: LoginInputDTO = {
-                email: req.body.email,
-                password: req.body.password
-            };
+            const { email, password } = req.body
 
-            const userBusiness = new UserBusiness();
-            const token = await userBusiness.getUserByEmail(loginData);
+            const input: LoginInputDTO = {
+                email,
+                password
+            }
 
-            res.status(200).send({ token });
+            const token = await this.userBusiness.getUserByEmail(input);
+
+            res.status(200).send({ message: "User logged in successfully", token });
 
         } catch (error) {
-            res.status(400).send({ error: error.message });
+            if (error instanceof Error) {
+                return res.status(400).send(error.message)
+            }
+            res.status(500).send("Erro no login")
         }
 
         await BaseDatabase.destroyConnection();
