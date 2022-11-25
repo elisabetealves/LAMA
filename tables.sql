@@ -43,3 +43,11 @@ CREATE TABLE
         FOREIGN KEY (show_id) REFERENCES NOME_TABELA_SHOWS(id),
         FOREIGN KEY (user_id) REFERENCES NOME_TABELAS_USUÁRIOS(id)
     );
+
+CREATE TABLE
+    IF NOT EXISTS TABELAS_PHOTO (
+        id VARCHAR(255) PRIMARY KEY,
+        photo BLOB,
+        event_id VARCHAR(255),
+        FOREIGN KEY(event_id) REFERENCES NOME_TABELA_SHOWS(id)
+    );

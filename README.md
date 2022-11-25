@@ -205,6 +205,14 @@ E divirta-se :)
 
 <br>
 
+## 🔃 Rotas PHOTOSS:
+
+| Método HTTP | Endpoint     | Descrição      |
+| ----------- | ------------ | -------------- |
+| POST        | `/photo/add` | Adicionar foto |
+
+<br>
+
 ## ✨ O que funciona
 
 - Cadastrar
@@ -215,12 +223,12 @@ E divirta-se :)
 - Pegar todos os shows de uma data
 - Criar um ingresso
 - Comprar ingresso
+- Adicionar foto
 
 <br>
 
 ## ❌ O Que Não Funciona
 
-- Adicionar foto
 - Pegar todas as fotos
 
 <h1>
