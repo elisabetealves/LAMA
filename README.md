@@ -243,7 +243,7 @@ _Caso queira contribuir com o projeto, será totalmente bem-vindx!!!_
 _Qualquer dúvida ou sugestão, chama no contatinho!_
 
   <tr>  
-   <td align="center"><a href="https://github.com/dickfreitas"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98359009?v=4" width="100px;" alt=""/><br /><sub><b>Dickson Freitas</b></sub></a><br /><a href="https://www.linkedin.com/in/"> <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a> </td>    
+   <td align="center"><a href="https://github.com/dickfreitas"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98359009?v=4" width="100px;" alt=""/><br /><sub><b>Dickson Freitas</b></sub></a><br /><a href="https://www.linkedin.com/in/dickson-sampaio-286205230/"> <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a> </td>    
    <td align="center"><a href="https://github.com/elisabetealves"><img style="border-radius: 50%;" src="https://unavatar.now.sh/github/elisabetealves" width="100px;" alt=""/><br /><sub><b>Elisabete Alves</b></sub></a><br /><a href="https://www.linkedin.com/in/elisabete-a-santos/"> <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a> </td> 
   </tr>
 
